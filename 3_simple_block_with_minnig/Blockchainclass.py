@@ -2,25 +2,25 @@ from Blockclass import Block
 class BlockChain:
 	def __init__(self):
 		self.chain = [self.createGenesisBlock()]
-		self.difficulty = 5;
+		self.difficulty = 5
 
 	def createGenesisBlock(self):
-		return Block(0, "Genesis Block", "0");
+		return Block(0, "Genesis Block", "0")
 
 	def getLastestBlock(self):
-		return self.chain[len(self.chain) - 1];
+		return self.chain[len(self.chain) - 1]
 
 	def addBlock(self, newBlock):
-		newBlock.previousHash = self.getLastestBlock().hash;
-		newBlock.mineBlock(self.difficulty);
-		self.chain.append(newBlock);
+		newBlock.previousHash = self.getLastestBlock().hash
+		newBlock.mineBlock(self.difficulty)
+		self.chain.append(newBlock)
 	def isChainValid(self):
 		for i in range(len(self.chain)):
-			currentBlock = self.chain[i];
-			previousBlock = self.chain[i - 1];
+			currentBlock = self.chain[i]
+			previousBlock = self.chain[i - 1]
 			if (currentBlock.hash != currentBlock.calculateHash()):
-				return False;
+				return False
 		if (currentBlock.previousHash != previousBlock.hash):
-			return False;
+			return False
 
-		return True;
+		return True

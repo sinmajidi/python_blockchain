@@ -1,6 +1,6 @@
 import hashlib
 import datetime
-dificulty_check="000000000000000000000000000000";
+dificulty_check="000000000000000000000000000000"
 class Block:
 	def __init__(self,index,data,previousHash=''):
 		self.index=index
@@ -22,4 +22,4 @@ class Block:
 
 		while (self.hash[:difficulty]!= dificulty_check[:difficulty]):
 			self.nonce+=1
-			self.hash = self.calculateHash();
+			self.hash = self.calculateHash()
